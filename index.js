@@ -1,26 +1,23 @@
 const R = +prompt('R = '); // Запрошуємо ввід значення вхідного параметру R
-const xp = +prompt('Введіть х початкове'); // Запрошуємо ввід x початкового
-const xk = +prompt('Введіть х кінцеве'); // Запрошуємо ввід х кінцевого
-const dx = +prompt('Введіть крок'); // Запрошуємо ввід кроку
 
-console.log('---------------------------');
-console.log('|\tx\t|\ty\t|');
-console.log('---------------------------');
-
-let y; // Результат обчислень;
-
-for (let x = xp; x <= xk; x += dx) {
-  if (x <= -6) {
-    y = R;
-  } else if (x > -6 && x <= -R) {
-    y = (x + R) / (-R + 6); 
-  } else if (x > -R && x <= 0) {
-    y = R - Math.sqrt(R ** 2 - (x + R) ** 2);
-  } else if (x > 0 && x <= R) {
-    y = Math.sqrt(R ** 2 - x ** 2);
-  } else if (x > R) {
-    y = -x + R;
+for (let i = 0; i < 10; i++) {
+  const x = +prompt('Введіть значення х'); // Запрошуємо ввід значення вхідного параметру х
+  const y = +prompt('Введіть значення у'); // Запрошуємо ввід значення вхідного параметру у
+  
+  if ((x + R) ** 2 + (y - R) ** 2 >= R ** 2 && y <= R && x >= -R && y >= 0 && x <= 0 || (x - R) ** 2 + (y + R) ** 2 >= R ** 2 && y >= -R && x <= R && y <= 0 && x >= 0) {
+    console.log('yes');
+  } else {
+    console.log('no');
   }
+}
 
-  console.log(`|\t${x.toFixed(2)}\t|\t${y.toFixed(3)}\t|`);
+for (let i = 0; i < 10; i++) {
+  const x = 2 * R * Math.random() - R;
+  const y = 2 * R * Math.random() - R;
+  
+  if ((x + R) ** 2 + (y - R) ** 2 >= R ** 2 && y <= R && x >= -R && y >= 0 && x <= 0 || (x - R) ** 2 + (y + R) ** 2 >= R ** 2 && y >= -R && x <= R && y <= 0 && x >= 0) {
+    console.log(`${x.toFixed(2)}\t${y.toFixed(3)}\tyes`);
+  } else {
+    console.log(`${x.toFixed(2)}\t${y.toFixed(3)}\tno`);
+  }
 }
